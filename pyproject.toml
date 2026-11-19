@@ -9,6 +9,7 @@ dependencies = [
     "numpy>=2.0",
     "matplotlib>=3.9",
     "tqdm>=4.66",
+    "truststore>=0.10.5",
 ]
 
 [project.optional-dependencies]
