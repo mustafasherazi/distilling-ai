@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+# large artifacts: datasets, checkpoints, model weights
+data/
+checkpoints/
+*.pt
+*.safetensors
+*.bin
+runs/
+wandb/
