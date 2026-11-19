@@ -21,7 +21,12 @@ if grep -qi microsoft /proc/version 2>/dev/null; then
   export VLLM_WSL2_ENABLE_PIN_MEMORY=1
 fi
 
+# Settings used for the measurements in the post:
+# - eager mode (no CUDA graphs): avoids graph-capture problems under WSL2 and keeps startup fast.
+# - vLLM's built-in sampler: FlashInfer's sampler is compiled on first use and needs the full CUDA toolkit.
+export VLLM_USE_FLASHINFER_SAMPLER=0
+
 echo "Serving $MODEL on :8000 (gpu-memory-utilization=$GPU_MEM_UTIL, max-model-len=$MAX_MODEL_LEN)"
 echo "Watch the startup log for 'GPU KV cache size: N tokens' -- compare it with kv_budget.py."
 exec vllm serve "$MODEL" --port 8000 \
-  --gpu-memory-utilization "$GPU_MEM_UTIL" --max-model-len "$MAX_MODEL_LEN"
+  --gpu-memory-utilization "$GPU_MEM_UTIL" --max-model-len "$MAX_MODEL_LEN" --enforce-eager

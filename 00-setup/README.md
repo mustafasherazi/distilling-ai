@@ -36,7 +36,7 @@ vLLM itself reported 119,232 and 12,576 tokens. The estimate ignores activation 
 
 ## What I measured (RTX 4070 Ti Super 16GB, vLLM 0.25.0)
 
-Qwen2.5-7B-Instruct-AWQ, `--gpu-memory-utilization 0.75`, 8K context. aiperf 0.11.0, 512 input / 256 output tokens.
+Qwen2.5-7B-Instruct-AWQ, `--gpu-memory-utilization 0.75`, 8K context, `--enforce-eager`. aiperf 0.11.0, 512 input / 256 output tokens.
 
 | Concurrent users | Speed per user | Time to first token (p50) | Total output |
 | --- | --- | --- | --- |
