@@ -22,7 +22,7 @@ if grep -qi microsoft /proc/version 2>/dev/null; then
 fi
 
 # Settings used for the measurements in the post:
-# - eager mode (no CUDA graphs): avoids graph-capture problems under WSL2 and keeps startup fast.
+# - eager mode (no CUDA graphs): what I measured with. Removing --enforce-eager may be faster; worth trying.
 # - vLLM's built-in sampler: FlashInfer's sampler is compiled on first use and needs the full CUDA toolkit.
 export VLLM_USE_FLASHINFER_SAMPLER=0
 
